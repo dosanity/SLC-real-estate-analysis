@@ -50,7 +50,9 @@ As we can see from the chart, the bigger the longitude and lattitude, the higher
 
 We will now create a linear regression model to regress the Sold price on some of the other variables.
 
-![Screenshot (275)](https://user-images.githubusercontent.com/29410712/180318422-227791b2-ca80-481a-985b-c9bd38c7413e.png)
+<p align="center">
+  Sold Price = $β_0 + β_1x$
+</p>
 
 where $x$ is one of the other variables. 
 
@@ -93,7 +95,9 @@ Based on the OLS Regression, the R-squared is 0.988. This is saying that the 98.
 
 We now develop a multilinear regression model for house prices in this neighborhood. We could use this to come up with a list price for houses coming on the market, so will not be including the list price in our model and also ignore the categorical variable Prop_Type. Our model is now in the form:
 
-![Screenshot (279)](https://user-images.githubusercontent.com/29410712/180322146-8ca1e05f-e527-484c-b154-491bcde6c80a.png)
+<p align="center">
+  Sold Price = $β_0 + β_1x_1 + β_2x_2 + \cdots + β_nx_n$
+</p>
 
 where $x_i$ are predictive variables.
 
@@ -220,7 +224,13 @@ Above, we considered houses, townhouses, and condos together, but here
 
 We will now distinguish the difference between houses, townhouses, and condows. Consider the two regression models: 
 
-![Screenshot (280)](https://user-images.githubusercontent.com/29410712/180322408-6251a583-b43d-4771-9220-1b0ddbe22a87.png)
+<p align="center">
+  Sold Price = $β_0 + β_1$ (Prop_Type_num)
+</p>
+
+<p align="center">
+  Sold Price = $β_0 + β_1$ (Prop_Type_num) $+ β_2$ (TotSqf)
+</p>
 
 From the first model, it would appear that Property type is significant in predicting the sold price. On the other hand, the second model indicates that when we take into account total square footage, property type is no longer predictive. 
 
