@@ -13,12 +13,7 @@ We will be analyzing SLC real estate data. The dataset contains multiple listing
 
 + We will check the datatypes and convert any numbers that were read as strings to numerical values. In particular, we converted 'TotSqf' to an integer and add a column titled `Prop_Type_num` that is 
 
-![lagrida_latex_editor (2)](https://user-images.githubusercontent.com/29410712/180324222-7e7179bb-d31b-4073-8576-41fa397826ac.png)
-![lagrida_latex_editor (1)](https://user-images.githubusercontent.com/29410712/180324269-4f877ef2-6db6-4794-b632-6d803b97bb6c.png)
-
-![Screenshot (272)](https://user-images.githubusercontent.com/29410712/180318069-093ab722-1f12-4d4c-8bda-4e470e7f6703.png)
-
-
+![Equation1](https://user-images.githubusercontent.com/29410712/180324387-574ecc63-5a19-4cec-805a-2d57ebd2901e.png)
 
 + We removed the listings with erroneous `Longitude` (one has Longitude = 0) and `Taxes` values (two have unreasonably large values).
 
