@@ -1,17 +1,17 @@
 # Salt Lake City Real Estate
 
-We will be analyzing SLC real estate data. The dataset contains multiple listing service (MLS) real estate transactions for houses sold in 2015-16 in zip code 84103 ([SLC avenues neighborhood](https://www.google.com/maps/place/Salt+Lake+City,+UT+84103/@40.8030372,-111.8957957,12z/data=!3m1!4b1!4m5!3m4!1s0x87525f672006dded:0x311e638d9a1a2de5!8m2!3d40.810506!4d-111.8449346)). We are primarily interested in regressing the `SoldPrice` on the house attributes (`property size`, `house size`, `number of bedrooms`, etc...). 
+We will be analyzing SLC real estate data. The dataset contains multiple listing service (MLS) real estate transactions for houses sold in 2015-16 in zip code 84103 ([SLC avenues neighborhood](https://www.google.com/maps/place/Salt+Lake+City,+UT+84103/@40.8030372,-111.8957957,12z/data=!3m1!4b1!4m5!3m4!1s0x87525f672006dded:0x311e638d9a1a2de5!8m2!3d40.810506!4d-111.8449346)). We are primarily interested in regressing the SoldPrice on the house attributes (property size, house size, number of bedrooms, etc...).
 
 ## The Data
 
-1. There are 206 different variables associated with each of the 348 houses in this dataset. There are some information about real estate data on [this](http://www.utahrealestate.com/) website to get a better sense of the meanings of the column headers in the dataset.  
+1. There are 206 different variables associated with each of the 348 houses in this dataset. There is some information about real estate data on [this](http://www.utahrealestate.com/) website to get a better sense of the meanings of the column headers in the dataset.  
 
-+ We are only keeping houses with List Price between 200,000 and 1,000,000 dollars. This is an arbitrary choice and we realize that some people are high rollers, but for our purposes we'll consider the others as outliers. 
++ We are only keeping houses with List Price between 200,000 and 1,000,000 dollars. This is an arbitrary choice, and we realize that some people are high rollers, but for our purposes we'll consider the others as outliers. 
 
 + We will be keeping these variables: 
 `['Acres', 'Deck', 'GaragCap', 'Latitude', 'Longitude', 'LstPrice', 'Patio', 'PkgSpacs', 'PropType', 'SoldPrice', 'Taxes', 'TotBed', 'TotBth', 'TotSqf', 'YearBlt']` 
 
-+ We will check the datatypes and convert any numbers that were read as strings to numerical values. In particular, we converted 'TotSqf' to an integer and add a column titled `Prop_Type_num` that is 
++ We will check the datatypes and convert any numbers that were read as strings to numerical values. In particular, we converted `TotSqf` to an integer and add a column titled `Prop_Type_num` that is 
 
 ![Equation1](https://user-images.githubusercontent.com/29410712/180324387-574ecc63-5a19-4cec-805a-2d57ebd2901e.png)
 
@@ -33,18 +33,18 @@ We will be exploring the data set by
 
 ![real-estate-scatter](https://user-images.githubusercontent.com/29410712/180319003-85635773-b851-4135-a30c-a6680a8a892f.png)
 
-In our exploratory analysis, there are 260 observations and 18 variables in the train dataset. Based on the correlation scatterplot, the columns with the strongest correlation is the LstPrice and the SoldPrice. The plot is almost a linear line. Additionally, there are more that own a Single Family then any other Property Type.
+In our exploratory analysis, there are 260 observations and 18 variables in the training dataset. Based on the correlation scatterplot, the columns with the strongest correlation are the LstPrice and the SoldPrice. The plot is almost a linear line. Additionally, there are more than own a Single Family than any other Property Type.
 
 ## Analysis Tools
 
 ### Geospatial plot
 Geospatial data defines specific geographical locations, either in the form of latitude and longitude coordinates or text fields with names of geographical areas, such as countries or states. Geospatial charts combine geospatial data with other forms of data to create map-based charts.
 
-Two of the variables are the latitude and longitude of each listing. Salt Lake City is on a east-west, north-south grid, so even a simple plot of latitutde and longitude makes sense. Thus, we will be creating a scatterplot of these two variables.
+Two of the variables are the latitude and longitude of each listing. Salt Lake City is on a east-west, north-south grid, so even a simple plot of latitude and longitude makes sense. Thus, we will be creating a scatterplot of these two variables.
 
 ![real-estate-geospatial](https://user-images.githubusercontent.com/29410712/180321451-3765f0f8-3f4f-4da2-9101-15a80d963031.png)
 
-As we can see from the chart, the bigger the longitude and lattitude, the higher the price is for the house. Houses closer to (-111.91, 40.770) are cheaper in price.
+As we can see from the chart, the bigger the longitude and latitude, the higher the price is for the house. Houses closer to (-111.91, 40.770) are cheaper in price.
 
 ### Linear Regression
 
@@ -216,13 +216,13 @@ strong multicollinearity or other numerical problems.
 
 ![DiffPriceRelative](https://user-images.githubusercontent.com/29410712/180322345-9225101e-d08e-45b7-a23d-96319290064c.png)
 
-The multilinear regression model has a lower R squared than the simple linear regression model including the List Price. Therefore, there is more of the variation explained by the simple regression model. Additionally, based on the two models, the model that predicts the DiffPriceAbsolute is better than the model that predicts the DiffPriceRelative because the R squared is greater. Furthermore, from the different trained plots, the plot for the DiffPriceAbsolute has more plots closer to the linear line, thus shows the why more of the variation is explained. Although DiffPriceAbsolute is better, it still doesn't have a high R squared.
+The multilinear regression model has a lower R squared than the simple linear regression model including the List Price. Therefore, there is more variation explained by the simple regression model. Additionally, based on the two models, the model that predicts the DiffPriceAbsolute is better than the model that predicts the DiffPriceRelative because the R squared is greater. Furthermore, from the different trained plots, the plot for the DiffPriceAbsolute has more plots closer to the linear line, thus shows the why more of the variation is explained. Although DiffPriceAbsolute is better, it still doesn't have a high R squared.
 
 #### Incorporating a Categorical Variable
 
 Above, we considered houses, townhouses, and condos together, but here 
 
-We will now distinguish the difference between houses, townhouses, and condows. Consider the two regression models: 
+We will now distinguish the difference between houses, townhouses, and condos. Consider the two regression models: 
 
 <p align="center">
   Sold Price = $β_0 + β_1$ (Prop_Type_num)
