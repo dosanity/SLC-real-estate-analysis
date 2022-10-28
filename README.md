@@ -13,7 +13,13 @@ We will be analyzing SLC real estate data. The dataset contains multiple listing
 
 + We will check the datatypes and convert any numbers that were read as strings to numerical values. In particular, we converted `TotSqf` to an integer and add a column titled `Prop_Type_num` that is 
 
-![Equation1](https://user-images.githubusercontent.com/29410712/180324387-574ecc63-5a19-4cec-805a-2d57ebd2901e.png)
+$$
+  \text{Prop Type num}_i =
+  \begin{cases}
+  0,  & \text{if i-th listing is a condo or townhouse} \\
+  1, & \text{if i-th listing is a single family house}
+  \end{cases}
+$$
 
 + We removed the listings with erroneous `Longitude` (one has Longitude = 0) and `Taxes` values (two have unreasonably large values).
 
@@ -50,9 +56,9 @@ As we can see from the chart, the bigger the longitude and latitude, the higher 
 
 We will now create a linear regression model to regress the Sold price on some of the other variables.
 
-<p align="center">
-  Sold Price = $β_0 + β_1x$
-</p>
+$$
+  \text{Sold Price} = β_0 + β_1x
+$$
 
 where $x$ is one of the other variables. 
 
@@ -95,9 +101,9 @@ Based on the OLS Regression, the R-squared is 0.988. This is saying that the 98.
 
 We now develop a multilinear regression model for house prices in this neighborhood. We could use this to come up with a list price for houses coming on the market, so will not be including the list price in our model and also ignore the categorical variable Prop_Type. Our model is now in the form:
 
-<p align="center">
-  Sold Price = $β_0 + β_1x_1 + β_2x_2 + \cdots + β_nx_n$
-</p>
+$$
+  \text{Sold Price} = β_0 + β_1x_1 + β_2x_2 + \cdots + β_nx_n
+$$
 
 where $x_i$ are predictive variables.
 
@@ -224,13 +230,13 @@ Above, we considered houses, townhouses, and condos together, but here
 
 We will now distinguish the difference between houses, townhouses, and condos. Consider the two regression models: 
 
-<p align="center">
-  Sold Price = $β_0 + β_1$ (Prop_Type_num)
-</p>
+$$
+  \text{Sold Price} = β_0 + β_1 (\text{Prop Type num})
+$$
 
-<p align="center">
-  Sold Price = $β_0 + β_1$ (Prop_Type_num) $+ β_2$ (TotSqf)
-</p>
+$$
+  \text{Sold Price} = β_0 + β_1 (\text{Prop Type num}) + β_2 (\text{TotSqf})
+$$
 
 From the first model, it would appear that Property type is significant in predicting the sold price. On the other hand, the second model indicates that when we take into account total square footage, property type is no longer predictive. 
 
