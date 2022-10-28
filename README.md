@@ -25,18 +25,6 @@ $$
 
 ## Exploratory Data Analysis 
 
-We will be exploring the data set by
-
-+ Creating a bar chart showing the breakdown of the different types of houses (single family, townhouse, condo).
-
-![House-Type-Bar-Chart](https://user-images.githubusercontent.com/29410712/180318914-c14b7660-f64b-4ce3-8f8a-59cee094849b.png)
-
-+ Computing the correlation matrix and use a heat map to visualize the correlation coefficients. 
-
-![Real-Estate-Correlation-Matrix](https://user-images.githubusercontent.com/29410712/180318962-d53a7e1e-a192-420d-83f5-c25ff4590301.png)
-
-+ Making a scatter plot matrix to visualize the correlations to determine which columns have strong correlations. 
-
 ![real-estate-scatter](https://user-images.githubusercontent.com/29410712/180319003-85635773-b851-4135-a30c-a6680a8a892f.png)
 
 In our exploratory analysis, there are 260 observations and 18 variables in the training dataset. Based on the correlation scatterplot, the columns with the strongest correlation are the LstPrice and the SoldPrice. The plot is almost a linear line. Additionally, there are more than own a Single Family than any other Property Type.
